@@ -11,4 +11,10 @@ public partial class About : Page
     {
 
     }
+
+    protected void ButtonAddComment_Click(object sender, EventArgs e)
+    {
+        LabelComments.Text = TextBoxComment.Text;
+        //XSS Attack
+    }
 }
