@@ -1,0 +1,8 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
+<p>Hoşgeldin @User.Identity.Name Auth type: @User.Identity.AuthenticationType</p>
+<p>Bulunduğunuz rol: @User.Claims.ToList()[1].Value</p>

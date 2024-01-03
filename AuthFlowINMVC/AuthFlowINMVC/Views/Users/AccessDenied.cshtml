@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewData["Title"] = "AccessDenied";
+}
+
+<h1>Access Denied</h1>
+<p> Üzgünüm @User.Identity.Name, Sizin rolünüz, "@User.Claims.ToList()[1].Value" olduğundan bu sayfayı görme yetkiniz bulunmuyor </p>
+<p>"Bu bir hata olmalı" diyorsanız, lütfen sistem yöneticisi ile iletişime geçin</p>
