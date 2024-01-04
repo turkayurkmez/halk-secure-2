@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="getir">Ürünleri</button>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            $('#getir').on('click',function(){
+
+                let token = localStorage.getItem('token');
+                console.log(token);
+                $.ajax({
+                    headers:{
+                        Authorization:'Bearer  '+token 
+                    },
+                    url:'https://localhost:7233/api/Products',
+                    type:'GET',
+                    success:function(data){
+                        console.log(data.message);
+                    },
+                    error:function(err){
+                        console.log('hata');
+                        console.log(err.status)
+                        if (err.status == 401) {
+                            console.log('lütfen giriş yapın...')
+                        }
+                    },
+
+                    
+                });
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" name="" placeholder="Kullanıcı adı" id="userName"><br>
+    <input type="password" name="" placeholder="Şifre" id="pass">
+    <button id="login">Login</button>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#login').on('click', function () {
+                let name = $('#userName').val();
+                let pass = $('#pass').val();
+
+                var sendingData = {
+                    "userName": name,
+                    "password": pass
+                }
+
+                console.log(JSON.stringify(sendingData));
+
+                $.ajax({
+                    url: 'https://localhost:7233/api/Users',
+                    method:'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(sendingData),
+                    type:'POST',
+                    success:function(data){
+                        console.log(data);
+                        localStorage.clear();
+                        localStorage.setItem('token',data.token);
+                    }
+                });
+
+            });
+        });
+    </script>
+</body>
+
+</html>
